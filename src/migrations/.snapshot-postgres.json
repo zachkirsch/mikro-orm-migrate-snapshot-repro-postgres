@@ -36,7 +36,7 @@
           "length": 6,
           "precision": null,
           "scale": null,
-          "default": "CURRENT_TIMESTAMP",
+          "default": "current_timestamp",
           "comment": null,
           "collation": null,
           "enumItems": [],
@@ -75,7 +75,7 @@
           "collation": null,
           "enumItems": [],
           "mappedType": "integer",
-          "generated": "(COALESCE(balance, 0) * 2) stored"
+          "generated": "(coalesce(balance, 0) * 2) STORED"
         },
         "id": {
           "name": "id",
@@ -96,7 +96,7 @@
         },
         "location": {
           "name": "location",
-          "type": "geometry",
+          "type": "geometry(point, 4326)",
           "unsigned": false,
           "autoincrement": false,
           "primary": false,
@@ -129,7 +129,7 @@
             "ACTIVE",
             "ARCHIVED"
           ],
-          "mappedType": "unknown",
+          "mappedType": "enum",
           "nativeEnumName": "account_status"
         }
       },
@@ -142,7 +142,8 @@
           "constraint": false,
           "keyName": "account_data_gin",
           "primary": false,
-          "unique": false
+          "unique": false,
+          "type": "gin"
         },
         {
           "columnNames": [
@@ -157,10 +158,9 @@
       ],
       "checks": [
         {
-          "name": "this_is_an_absurdly_long_check_constraint_name_to_trigger_postg",
+          "name": "this_is_an_absurdly_long_check_constraint_name_to_trigger_postgres_truncation",
           "expression": "balance >= 0",
-          "definition": "CHECK ((balance >= 0))",
-          "columnName": "balance"
+          "definition": "check (balance >= 0)"
         }
       ],
       "triggers": [],
@@ -261,7 +261,7 @@
           "keyName": "order_pending_unique_ref",
           "primary": false,
           "unique": true,
-          "where": "(status)::text = 'PENDING'::text"
+          "where": "status = 'PENDING'"
         }
       ],
       "checks": [],
