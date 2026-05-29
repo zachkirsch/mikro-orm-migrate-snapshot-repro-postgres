@@ -1,0 +1,22 @@
+{
+  "name": "mikro-orm-migrate-snapshot-repro-postgres",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "repro": "tsx src/repro.ts"
+  },
+  "dependencies": {
+    "@mikro-orm/core": "next",
+    "@mikro-orm/decorators": "next",
+    "@mikro-orm/migrations": "next",
+    "@mikro-orm/postgresql": "next",
+    "reflect-metadata": "^0.2.2"
+  },
+  "devDependencies": {
+    "@mikro-orm/cli": "next",
+    "@types/node": "^25.5.0",
+    "@types/pg": "^8.11.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0"
+  }
+}
