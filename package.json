@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "repro": "tsx src/repro.ts",
-    "migrate": "mikro-orm migration:create --blank"
+    "migrate": "mikro-orm migration:create"
   },
   "dependencies": {
     "@mikro-orm/core": "next",
